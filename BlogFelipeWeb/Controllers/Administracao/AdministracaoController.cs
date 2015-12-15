@@ -9,9 +9,11 @@ using System.Web.Mvc;
 
 namespace BlogFelipeWeb.Controllers.Administracao
 {
+    [Authorize]
     public class AdministracaoController : Controller
     {
         //// GET: Administracao
+        
         public ActionResult index()
         {
             return View();

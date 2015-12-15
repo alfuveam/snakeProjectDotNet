@@ -140,6 +140,7 @@
     <Compile Include="Controllers\Administracao\BlogController.cs" />
     <Compile Include="Controllers\ContUsuario\ListaUsuariosController.cs" />
     <Compile Include="Controllers\ContUsuario\ContUsuarioController.cs" />
+    <Compile Include="Controllers\Login\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +149,7 @@
     <Compile Include="Models\Administracao\CadastrarUsuarioViewModel.cs" />
     <Compile Include="Models\ContUsuario\ListarUsuariosViewModel.cs" />
     <Compile Include="Models\Detalhes\DetalhesPostViewModel.cs" />
+    <Compile Include="Models\Login\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,10 +204,10 @@
     <Content Include="Views\ContUsuario\EditarUsuario.cshtml" />
     <Content Include="Views\ContUsuario\CadastrarUsuario.cshtml" />
     <Content Include="Views\Blog\Post.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\PaginaInicial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
