@@ -1,0 +1,39 @@
+﻿@model BlogFelipeWeb.Models.Administracao.CadastrarUsuarioViewModel
+@{
+    ViewBag.Title = "Editar Usuario";
+}
+
+@using (Html.BeginForm())
+{
+    <h2>Editar Usuario</h2>
+    @Html.ValidationSummary(true)
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.iId)
+        @Html.TextBoxFor(x => x.iId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.iId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.sLogin)
+        @Html.TextBoxFor(x => x.sLogin, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.sLogin)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.sNome)
+        @Html.TextBoxFor(x => x.sNome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.sNome)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.sSenha)
+        @Html.PasswordFor(x => x.sSenha, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.sSenha)
+    </div>
+
+    <p>
+        <input type="submit" value="Salvar" class="btn btn-primary">
+    </p>
+
+}
