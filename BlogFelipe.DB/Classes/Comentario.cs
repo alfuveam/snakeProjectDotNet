@@ -15,6 +15,7 @@ namespace BlogFelipe.DB.Classes
         public string sPaginaWeb { get; set; }
         public string sNome { get; set; }
         public int idPost { get; set; }
+        public DateTime dDataHora { get; set; }
 
         public virtual Post Post { get; set; }
     }

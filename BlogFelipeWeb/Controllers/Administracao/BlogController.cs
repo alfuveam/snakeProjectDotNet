@@ -84,5 +84,26 @@ namespace BlogFelipeWeb.Controllers.Administracao
         }
         #endregion
 
+        [HttpPost]
+        public ActionResult Post(DetalhesPostViewModel viewModel)
+        {
+            if (true)
+            {
+                var conexao = new ConexaoBanco();
+                var post = (from p in conexao.Posts where p.Id == viewModel.id select p).FirstOrDefault();
+
+                if (post == null)
+                {
+                    throw new Exception(string.Format("Post código {0} não encontrado.", viewModel.id));
+                }
+                var comentario = new Comentario();
+                comentario.bAdmPost = HttpContext.User.Identity.IsAuthenticated;
+                comentario.lDescricao = viewModel.ComentarioDescricao;
+                comentario.sEmail = viewModel.ComentarioEmail;
+                comentario.idPost = viewModel.id;
+                comentario.sNome = viewModel.ComentarioNome;
+                comentario.sPaginaWeb = viewModel.ComentarioPaginaWeb;
+            }
+        }
     }
 }

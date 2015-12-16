@@ -49,6 +49,10 @@ namespace BlogFelipe.DB.Mapeamentos
                 .HasColumnName("IDPOST")
 				.IsRequired();
 
+            Property(x => x.dDataHora)
+                .HasColumnName("DATAHORA")
+                .IsRequired();
+
             HasRequired(x => x.Post)
                 .WithMany()
                 .HasForeignKey(x => x.idPost);
