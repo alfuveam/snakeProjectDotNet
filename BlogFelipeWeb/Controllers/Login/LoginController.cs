@@ -1,8 +1,11 @@
-﻿using System;
+﻿using BlogFelipe.DB;
+using BlogFelipeWeb.Models.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BlogFelipeWeb.Controllers.Login
 {
@@ -11,6 +14,7 @@ namespace BlogFelipeWeb.Controllers.Login
     public class LoginController : Controller
     {
         // GET: Login
+        #region Index
         //  Para ter usuarios sem login
         [AllowAnonymous]
         public ActionResult Index(string ReturnUrl)
@@ -18,5 +22,44 @@ namespace BlogFelipeWeb.Controllers.Login
             ViewBag.ReturnUrl = ReturnUrl;
             return View();
         }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(LoginViewModel viewModel, string ReturnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var conexao = new ConexaoBanco();
+            var usuario = (from p in conexao.Usuarios
+                           where p.sLogin.ToUpper() == viewModel.sLogin.ToUpper() &&
+                           p.sSenha == viewModel.sSenha
+                           select p).FirstOrDefault();
+            if (usuario == null)
+            {
+                ModelState.AddModelError("","Usuário e/ou senha estão incorretos.");
+                return View(viewModel);
+            }
+
+            FormsAuthentication.SetAuthCookie(viewModel.sLogin, viewModel.Lembrar);
+
+            if (ReturnUrl != null)
+            {
+                return Redirect(ReturnUrl);
+            }
+            return RedirectToAction("Index", "Blog");
+        }
+        #endregion
+
+        #region Sair
+        public ActionResult Sair()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+        #endregion
     }
 }

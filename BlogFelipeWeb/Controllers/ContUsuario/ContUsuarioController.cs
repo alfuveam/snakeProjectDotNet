@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace BlogFelipeWeb.Controllers.ContUsuario
 {
+    [Authorize]
     public class ContUsuarioController : Controller
     {
         // GET: Usuario
@@ -114,7 +115,7 @@ namespace BlogFelipeWeb.Controllers.ContUsuario
         }
 
         #region
-        public ActionResult ExcluirPost(int id)
+        public ActionResult ExcluirUsuario(int id)
         {
             var conexao = new ConexaoBanco();
             var usuario = (from p in conexao.Usuarios where p.Id == id select p).FirstOrDefault();

@@ -7,7 +7,7 @@
 
 <h2>Login</h2>
 
-@using (Html.BeginForm("Index", "Blog", new { ReturnUrl = ViewBag.ReturnUrl},FormMethod.Post,
+@using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl},FormMethod.Post,
     new { @class ="form-horizontal", role="form"}))
 {
     //Verifica se o token é valido
@@ -26,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(x => x.sSenha, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(x => x.sSenha, new { @class = "form-control", style = "width: 280px" })
+            @Html.PasswordFor(x => x.sSenha, new { @class = "form-control", style = "width: 280px" })
             @Html.ValidationMessageFor(x => x.sSenha)
         </div>
     </div>

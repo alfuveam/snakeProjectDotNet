@@ -13,8 +13,15 @@
 
 @foreach (var item in Model.Usuarios)
 {
+
     <h2>@Html.ActionLink(item.sNome,"EditarUsuario", "ContUsuario", new { id = item.Id}, null)</h2>
-    <h2>@Html.ActionLink("Excluir", "ExcluirPost", "ContUsuario", new { id = item.Id }, new { @class = "excluir-post" }) </h2>
+    <div>
+        <div class="icone-editar div-imagem"></div>
+        @Html.ActionLink("Editar", "EditarUsuario", "ContUsuario", new { id = item.Id }, null)
+        <div></div>
+        @Html.ActionLink("Excluir", "ExcluirUsuario", "ContUsuario", new { id = item.Id }, new { @class = "excluir-usuario" })
+    </div>
+    
 }
 
 @Html.Partial("_Paginacao", Model)

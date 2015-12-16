@@ -20,14 +20,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Administração", "Index", "Administracao")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "ContUsuario")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Administração", "Index", "Administracao")</li>
+                        <li>@Html.ActionLink("Usuários", "Index", "ContUsuario")</li>
+                        <li>@Html.ActionLink("Sair", "Sair","Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login","Index", "Login")</li>
+                    }
+                    
                 </ul>
                 <form method="get" action="~/Blog/Index" class="navbar-form navbar-right">
                     <div>
                         @Html.TextBox("Pesquisa", null, new { placeholder = "Pesquisar", @class = "form-control"})
                     </div>       
-                </form>>
+                </form>
             </div>
         </div>
     </div>

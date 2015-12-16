@@ -22,12 +22,14 @@
 
     <div>
         @Html.LabelFor(x => x.sSenha)
-        @Html.TextBoxFor(x => x.sSenha, new { @class = "form-control" })
+        @Html.PasswordFor(x => x.sSenha, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.sSenha)        
     </div>
 
-    <p>
-        <input type="submit" value="Salvar" class="btn btn-primary">
-    </p>
-
+    <div>
+        @Html.LabelFor(x => x.sConfirmarSenha)
+        @Html.PasswordFor(x => x.sConfirmarSenha, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.sConfirmarSenha)
+    </div>
+    <p><input type="submit" value="Salvar" class="btn btn-primary"></p>
 }

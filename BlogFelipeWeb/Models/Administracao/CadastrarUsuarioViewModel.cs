@@ -27,5 +27,11 @@ namespace BlogFelipeWeb.Models.Administracao
         [Required(ErrorMessage = "O campo Senha é Obrigatório")]
         [StringLength(100, MinimumLength = 4, ErrorMessage = "A quantidade de caracteres no campo Senha deve ser entre {2} e {1}")]
         public string sSenha { get; set; }
+
+        [DisplayName("Confirmar Senha")]
+        [Required(ErrorMessage = "O campo Confirmar Senha é Obrigatório")]
+        [StringLength(100, MinimumLength = 4, ErrorMessage = "A quantidade de caracteres no campo Senha deve ser entre {2} e {1}")]
+        [Compare("sSenha", ErrorMessage = "As senhas digitadas não conferem.")]
+        public string sConfirmarSenha { get; set; }
     }
 }
