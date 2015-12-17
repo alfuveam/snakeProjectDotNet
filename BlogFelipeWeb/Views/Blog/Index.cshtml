@@ -21,44 +21,52 @@
         @foreach (var item in Model.Posts)
         {
 
-            <h2>
-                @Html.ActionLink(item.sTitulo, "Post", "Blog", new
+        <h2>
+                @Html.ActionLink(item.Titulo, "Post", "Blog", new
        {
-           id = item.Id,
-           ano = item.dDataPublicacao.Year,
-           mes = item.dDataPublicacao.Month,
-           dia = item.dDataPublicacao.Day,
-           titulo = item.sTitulo
+           id = item.id,
+           ano = item.DataPublicacao.Year,
+           mes = item.DataPublicacao.Month,
+           dia = item.DataPublicacao.Day,
+           titulo = item.Titulo
        }, null)
         </h2>
 
         <div>
             <div class="icone-calendario div-imagem"></div>
-            @item.dDataPublicacao.ToString("dd/MM/yyyy HH:mm")
+            @item.DataPublicacao.ToString("dd/MM/yyyy HH:mm")
             <div class="icone-autor div-imagem"></div>
-            @item.sAutor.ToString()
+            @item.Autor
             <div class="icone-comentario div-imagem"> </div>
-            @Html.ActionLink("0", "EditarPost", "Administracao", new { id = item.Id }, null)
+            @Html.ActionLink(item.QtdComentarios.ToString(), "Post", "Blog", new
+               {
+                   id = item.id,
+                   ano = item.DataPublicacao.Year,
+                   mes = item.DataPublicacao.Month,
+                   dia = item.DataPublicacao.Day,
+                   titulo = item.Titulo
+               }, null)
+
             @if (Request.IsAuthenticated)
             {
                 <div class="icone-editar div-imagem"></div>
-                @Html.ActionLink("Editar", "EditarPost", "Administracao", new { id = item.Id }, null)
+                @Html.ActionLink("Editar", "EditarPost", "Administracao", new { id = item.id }, null)
                 <div class="icone-excluir div-imagem "></div>
-                @Html.ActionLink("Excluir", "ExcluirPost", "Administracao", new { id = item.Id }, new { @class = "excluir-post" })
+                @Html.ActionLink("Excluir", "ExcluirPost", "Administracao", new { id = item.id }, new { @class = "excluir-post" })
             }
 
         </div>
 
-        <p><div>@item.sResumo</div></p>
+        <p><div>@item.Resumo</div></p>
 
         
             @Html.ActionLink("Continue Lendo!", "Post", "Blog", new
            {
-               id = item.Id,
-               ano = item.dDataPublicacao.Year,
-               mes = item.dDataPublicacao.Month,
-               dia = item.dDataPublicacao.Day,
-               titulo = item.sTitulo
+               id = item.id,
+               ano = item.DataPublicacao.Year,
+               mes = item.DataPublicacao.Month,
+               dia = item.DataPublicacao.Day,
+               titulo = item.Titulo
            }, null)
         
         }

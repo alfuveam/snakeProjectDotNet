@@ -50,5 +50,9 @@ namespace BlogFelipeWeb.Models.Detalhes
         [StringLength(100, ErrorMessage = "O campo Página Web deve possuir no máximo {1} caracteres!")]        
         public string ComentarioPaginaWeb { get; set; }
 
+        /*LISTAR COMENTÁRIOS */
+        public int iPaginaAtual { get; set; }
+        public int iTotalPaginas { get; set; }
+        public IList<Comentario> iLComentarios { get; set; }
     }
 }

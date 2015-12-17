@@ -192,5 +192,33 @@ namespace BlogFelipeWeb.Controllers.Administracao
             return RedirectToAction("Index", "Blog");
         }
         #endregion
+
+        #region ExcluirComentario
+        public ActionResult ExcluirComentario(int id)
+        {
+            var conexaoBanco = new ConexaoBanco();
+            var comentario = (from p in conexaoBanco.Comentarios
+                              where p.Id == id
+                              select p).FirstOrDefault();
+            if (comentario == null)
+            {
+                throw new Exception(string.Format("Comentário código {0} não foi encontrado.", id));
+            }
+            conexaoBanco.Comentarios.Remove(comentario);
+            conexaoBanco.SaveChanges();
+
+            var post = (from p in conexaoBanco.Posts
+                        where p.Id == comentario.idPost
+                        select p).First();
+            return Redirect(Url.Action("Post", "Blog", new
+            {
+                ano = post.dDataPublicacao.Year,
+                mes = post.dDataPublicacao.Month,
+                dia = post.dDataPublicacao.Day,
+                titulo = post.sTitulo,
+                id = post.Id
+            }) + "#comentarios");
+        }
+        #endregion
     }
 }

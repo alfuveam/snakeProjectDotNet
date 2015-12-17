@@ -1,4 +1,5 @@
 ﻿using BlogFelipe.DB.Classes;
+using BlogFelipeWeb.Models.Detalhes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BlogFelipeWeb.Models.ContUsuario
     public class ListarPostsViewModel
     {
 //  Registro por pagina = 10
-        public List<Post> Posts { get; set; }
+        public List<DetalhesPostViewModel> Posts { get; set; }
         public int iPaginaAtual { get; set; }
         public int iTotalDePaginas { get; set; }
         public string sTag { get; set; }
