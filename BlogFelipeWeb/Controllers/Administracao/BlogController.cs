@@ -23,6 +23,7 @@ namespace BlogFelipeWeb.Controllers.Administracao
             var registroPorPagina = 10;
             var posts = (from p in conexao.Posts where p.bVisivel select p);
 
+
 //  Verificando se é nulo a tag
             if (!string.IsNullOrEmpty(tag))
             {
