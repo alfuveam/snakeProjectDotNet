@@ -1,0 +1,26 @@
+﻿@model BlogFelipeWeb.Models.Detalhes.DetalhesPostViewModel
+
+@if (Model.iTotalPaginas > 1)
+{
+    var proximaPagina = Model.iPaginaAtual + 1;
+    var paginaAnterior = Model.iPaginaAtual - 1;
+
+    <div class="pagination">
+        @if (Model.iPaginaAtual > 1)
+        {
+@*class= "classe-paginas*@
+           <a href="@Url.Action("Post", new { id = Model.id, pagina = paginaAnterior })#comentarios" rel="prev">
+               paginaAnterior anterior</a>
+
+           }
+        @if (proximaPagina != 1)
+        {
+            <a href="@Url.Action("Post", new
+                { id = Model.id,
+                    pagina = proximaPagina
+                })#comentarios" rel="prev">Próxima Página</a>
+        }
+</div>
+}
+
+

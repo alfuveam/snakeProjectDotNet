@@ -169,5 +169,10 @@ namespace BlogFelipeWeb.Controllers.Administracao
             return View(viewModel);
         }
         #endregion
+
+        public ActionResult _PaginacaoPost()
+        {
+            return PartialView();
+        }
     }
 }

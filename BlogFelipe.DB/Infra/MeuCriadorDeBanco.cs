@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlogFelipe.DB.Infra
 {
-    public class MeuCriadorDeBanco : DropCreateDatabaseIfModelChanges<ConexaoBanco>
+    public class MeuCriadorDeBanco : DropCreateDatabaseAlways<ConexaoBanco>
     {
         protected override void Seed(ConexaoBanco context)
         {
